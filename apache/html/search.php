@@ -1,10 +1,10 @@
 <?php
 // Database connection
 $servername = "mariadb";
-$username = "user"; 
-$password = "password"; 
+$username = "root";
+$password = "MyCyclops0125!";
 $dbname = "world_build";
-$socket = "/var/run/mysql/mysqld.sock";
+
 // Create connection
 $conn = new MySQLi($servername, $username, $password, $dbname);
 
@@ -16,28 +16,81 @@ if ($conn->connect_error) {
 // Fetch search query from the form
 $search = isset($_POST['search']) ? $_POST['search'] : '';
 
-// SQL query using prepared statement
-$sql = "SELECT * FROM characters WHERE firstname LIKE ? OR lastname LIKE ? OR species LIKE ? OR hometown LIKE ? OR height LIKE ? OR weight LIKE ? OR eye_color LIKE ? OR hair_color LIKE ? OR build LIKE ? OR positive_traits LIKE ? OR negative_traits LIKE ? OR motivations LIKE ? OR fears LIKE ? OR family_members LIKE ? OR education LIKE ? OR physical_perks LIKE ? OR magical_perks LIKE ? OR social_perks LIKE ? OR languages LIKE ? OR primary_weapon LIKE ? OR primary_armor LIKE ? OR unique_items LIKE ? OR social_status LIKE ? OR affiliations LIKE ? OR enemies LIKE ?";
-$stmt = $conn->prepare($sql);
-if ($stmt === false) {
-    die("Error preparing statement: " . $conn->error);
+if ($search) { // Check if a search term is entered
+    // SQL query to search the characters table
+    $sql = "SELECT * FROM characters WHERE 
+        firstname LIKE ? OR 
+        lastname LIKE ? OR 
+        species LIKE ? OR 
+        hometown LIKE ? OR 
+        height LIKE ? OR 
+        weight LIKE ? OR 
+        eye_color LIKE ? OR 
+        hair_color LIKE ? OR 
+        build LIKE ? OR 
+        positive_traits LIKE ? OR 
+        negative_traits LIKE ? OR 
+        motivations LIKE ? OR 
+        fears LIKE ? OR 
+        family_members LIKE ? OR 
+        education LIKE ? OR 
+        physical_perks LIKE ? OR 
+        magical_perks LIKE ? OR 
+        social_perks LIKE ? OR 
+        languages LIKE ? OR 
+        primary_weapon LIKE ? OR 
+        primary_armor LIKE ? OR 
+        unique_items LIKE ? OR 
+        social_status LIKE ? OR 
+        affiliations LIKE ? OR 
+        enemies LIKE ? OR 
+        backstory LIKE ?";
+
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Error preparing statement: " . $conn->error);
+    }
+
+    // Create the search term with wildcards
+    $searchTerm = "%$search%";
+
+    // Bind parameters
+    $stmt->bind_param(
+        'ssssssssssssssssssssssssss',
+        $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm,
+        $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm,
+        $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm
+    );
+
+    // Execute the statement
+    if (!$stmt->execute()) {
+        die("Error executing statement: " . $stmt->error);
+    }
+
+    // Get the result
+    $result = $stmt->get_result();
+
+    // Check if the query returned any results
+    if ($result->num_rows > 0) {
+        echo "<h4>Search Results:</h4>";
+        echo "<div class='table-container'><table border='1'><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Species</th><th>Hometown</th><th>Height</th><th>Weight</th><th>Eye Color</th><th>Hair Color</th><th>Build</th><th>Positive Traits</th><th>Negative Traits</th><th>Motivations</th><th>Fears</th><th>Family Members</th><th>Education</th><th>Physical Perks</th><th>Magical Perks</th><th>Social Perks</th><th>Languages</th><th>Primary Weapon</th><th>Primary Armor</th><th>Unique Items</th><th>Social Status</th><th>Affiliations</th><th>Enemies</th></tr></div>";
+
+        // Output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . $row["id"] . "</td><td>" . $row["firstname"] . "</td><td>" . $row["lastname"] . "</td><td>" . $row["species"] . "</td><td>" . $row["hometown"] . "</td><td>" . $row["height"] . "</td><td>" . $row["weight"] . "</td><td>" . $row["eye_color"] . "</td><td>" . $row["hair_color"] . "</td><td>" . $row["build"] . "</td><td>" . $row["positive_traits"] . "</td><td>" . $row["negative_traits"] . "</td><td>" . $row["motivations"] . "</td><td>" . $row["fears"] . "</td><td>" . $row["family_members"] . "</td><td>" . $row["education"] . "</td><td>" . $row["physical_perks"] . "</td><td>" . $row["magical_perks"] . "</td><td>" . $row["social_perks"] . "</td><td>" . $row["languages"] . "</td><td>" . $row["primary_weapon"] . "</td><td>" . $row["primary_armor"] . "</td><td>" . $row["unique_items"] . "</<td>" . $row["social_status"] . "</td><td>" . $row["affiliations"] . "</td><td>" . $row["enemies"] . "</td><td>" . $row["backstory"] . "</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "0 results";
+    }
+
+    // Close the statement
+    $stmt->close();
 }
 
-// Bind parameters and execute the statement
-$stmt->bind_param("sssssssssssssssssssssssss", $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search);
-if ($stmt->execute() === false) {
-    die("Error executing statement: " . $stmt->error);
-}
-
-// Get the result set
-$result = $stmt->get_result();
-
-// Check if the query was successful
-if ($result === false) {
-    die("Error: " . $conn->error);
-}
+// Close the connection
+$conn->close();
 ?>
-
 
 
 
@@ -134,24 +187,6 @@ if ($result === false) {
             <input type="submit" value="Search">
         </form>
 
-        <?php
-
-        if ($search) {
-            if ($result->num_rows > 0) {
-                echo "<h4>Search Results:</h4>";
-                echo "<div class='table-container'><table border='1'><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Species</th><th>Hometown</th><th>Height</th><th>Weight</th><th>Eye Color</th><th>Hair Color</th><th>Build</th><th>Positive Traits</th><th>Negative Traits</th><th>Motivations</th><th>Fears</th><th>Family Members</th><th>Education</th><th>Physical Perks</th><th>Magical Perks</th><th>Social Perks</th><th>Languages</th><th>Primary Weapon</th><th>Primary Armor</th><th>Unique Items</th><th>Social Status</th><th>Affiliations</th><th>Enemies</th></tr></div>";
-                // Output data of each row
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row["id"]. "</td><td>" . $row["firstname"]. "</td><td>" . $row["lastname"]. "</td><td>" . $row["species"]. "</td><td>" . $row["hometown"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["eye_color"]. "</td><td>" . $row["hair_color"]. "</td><td>" . $row["build"]. "</td><td>" . $row["positive_traits"]. "</td><td>" . $row["negative_traits"]. "</td><td>" . $row["motivations"]. "</td><td>" . $row["fears"]. "</td><td>" . $row["family_members"]. "</td><td>" . $row["education"]. "</td><td>" . $row["physical_perks"]. "</td><td>" . $row["magical_perks"]. "</td><td>" . $row["social_perks"]. "</td><td>" . $row["languages"]. "</td><td>" . $row["primary_weapon"]. "</td><td>" . $row["primary_armor"]. "</td><td>" . $row["unique_items"]. "</td><td>" . $row["social_status"]. "</td><td>" . $row["affiliations"]. "</td><td>" . $row["enemies"]. "</td></tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "0 results";
-            }
-        }
-        ?>
-
-        <?php $conn->close(); ?>
     </div>
 
 </body>
