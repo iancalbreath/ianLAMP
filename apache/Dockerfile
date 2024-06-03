@@ -1,3 +1,8 @@
-FROM httpd:2.4
+FROM php:7.4-apache
 
-COPY ./public-html/ /usr/local/apache2/htdocs/
+COPY html/ /var/www/html/
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+RUN docker-php-ext-install mysqli && \
+    a2enmod rewrite
+

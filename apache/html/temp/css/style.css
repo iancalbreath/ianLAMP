@@ -1,0 +1,240 @@
+h1 {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 10px
+}
+
+p {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 10px
+}
+
+h2 {
+    font-family: 'Didact Gothic', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+}
+h4 {
+    font-family: 'Didact Gothic', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: left;
+    margin-left: 300px;
+}
+
+.sqlsearch {
+    display: block;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.sqlsearch p {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 15px;
+    line-height: 7px;
+
+}
+
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-left: 300px;
+    margin-right: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+th, td {
+
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 14px;
+    border: 1px solid black;
+    text-align: left;
+    min-width: 100px;
+    max-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+.container {
+    display: flex;
+    margin-left: -15px;
+    position: absolute;
+    margin-top: -40px;
+    z-index: -1;
+}
+
+.sidebar {
+
+    width: 275px;
+    background-image: url('greybar.png');
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+    margin-top: -10px;
+    margin: -10px;
+    
+
+}
+
+.ianphoto {
+    position: absolute;
+    margin: 50px;
+    margin-top: 50px;
+
+}
+
+.exp {
+    position: relative;
+    z-index: 2;
+    padding: 70px;
+}
+.exp h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 60px;
+    letter-spacing: 3px;
+}
+.exp h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    margin: 5px;
+    letter-spacing: 2px;
+    line-height: 30px;
+}
+.exp h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    margin-left: 3px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding-bottom: 6px;
+
+}
+.exp p {
+    font-size: 17px;
+    margin-left: 5px;
+    line-height: 1px;
+
+}
+.exp ul {
+    font-family: 'Didact Gothic', sans-serif; 
+
+    padding-left: 10px;
+    margin-left: 10px;
+    line-height: 18px;
+    
+}
+.exp li {
+    padding-left: 20px;
+    text-indent: -15px;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 15px;
+}
+.sidebar p {
+    position: absolute;
+    top: 300px;
+    left: 50px;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 15px;
+}
+.sidebar h1 {
+    position: absolute;
+    top: 800px;
+    left: 50px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    color: rgb(255, 193, 7)
+}
+
+.navbar.navbar-expand-lg {
+    margin-left: 560px;
+    height: 40px;
+    background-color: rgb(234, 232, 232);
+    
+
+}
+
+.nav-link.active {
+    color: black !important;
+
+}
+
+
+.contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+}
+
+.center-image {
+    display: block;
+    margin: auto;
+    padding-left: 20px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+    /* General Styles */
+    body {
+        font-size: 16px;
+        margin-right: 0px; /* Adjust font size for readability */
+    }
+    .container {
+        margin-right: 0px;
+    }
+    .navbar.navbar-expand-lg {
+        margin-left: 0px;
+        opacity: 1;
+    }
+
+    .navbar-toggler {
+        background-color: rgb(234, 232, 232);
+        justify-content: flex-start;
+    }
+
+  
+
+
+    .exp p {
+        line-height: 20px;
+    }
+    .sqlsearch {
+        margin-left: 400px;
+        position: absolute;
+        line-height: 25px;
+        margin-top: 30px;
+    }
+    .sqlsearch p {
+
+        line-height: 18px;
+    
+    }
+    /* Page Content */
+    .container {
+      padding: 10px; /* Add padding for better spacing */
+      margin-right: 0px;
+    }
+    .contacts {
+        position: relative;
+        margin-left: 300px;
+        margin-top: 50px;
+    }
+
+  }
+  

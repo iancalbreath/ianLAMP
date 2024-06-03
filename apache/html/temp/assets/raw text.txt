@@ -1,0 +1,58 @@
+			
+ 
+
+I’m a quick learner who loves solving puzzles and being of service. 
+
+My foundation in IT began as a Field Technician during the pandemic.  This has been a trying time for our community, and it was a challenge and an honor to serve as an essential worker.
+
+I’m proud to continue serving my community in my current position at Contra Costa Health, where I collaborate with several IT departments in providing support to our hospitals and clinics.
+
+I’m also attending school full-time on my way to my degree in Computer Science and have a special interest in SQL and Python programming, disaster recovery, and security.
+CONTACT
+PHONE:
+209-402-1056
+
+EMAIL:
+calbreathian@gmail.com
+HOBBIES
+Guitar
+Drawing
+Weightlifting
+Videogaming
+SOFTWARE
+Windows – Linux – Mac
+Office – WinSCP – PuTTY
+Access – SSMS – DBeaver
+Active Directory – PagerDuty
+vSphere – HEAT – IGEL UMS
+Citrix DaaS – Epic – RightFax		
+IAN CALBREATH
+I.T. PROFESSIONAL
+EDUCATION
+Los Medanos College | Diablo Valley College
+2023 – Current
+Computer Science major graduating in Spring ’25 with 4.0 GPA.
+Alongside my core curriculum, I have completed specific courses on SQL, Python, security applications, and network configurations.
+
+Modesto Junior College
+2020 – 2021
+PC Servicing and Repair courses with preparation for the CompTIA A+ exam. After completing this coursework I passed the CompTIA A+ exam, earning my first certificate.
+WORK EXPERIENCE
+Contra Costa County Health Services - Computer Operator II
+2022 – Current
+•	Collaborated cross-functionally with Database, Service Desk, and Infrastructure teams to expedite resolution of after-hours issues with support calls, automated jobs, infrastructure downtime, and catastrophic system failures.
+•	Acted as Service Desk support agent during evening hours to ensure uninterrupted support for critical healthcare facilities.
+•	Reduced mean incident resolution time by 35% by implementing incident management policies.
+•	Ensured Disaster Recovery readiness by creating daily environment backups.
+•	Misc. duties such as: Facilitate file transfers, monitor SQL Agent jobs for completion and errors, batch scan files for errors, monitor system health interfaces, VMware connections, cluster health, and CCTV systems.
+
+PAQ Inc. dba Food 4 Less - IT Field Technician
+2020 – 2021
+•	Ensured store operability by supporting helpdesk calls, visiting store sites daily to check in with store director and manager, and servicing IT equipment.
+•	Organized PIN Pad repair/replacement into one streamlined process and established line of communication with vendor that was not present before.
+•	Organized vendor appointments with stores for services we could not complete in-house such as running electrical lines, satellite installation, and Point-of-Sale system installation.
+
+Appen Global – Content Evaluator
+2018 – 2019
+•	Maintained a high level of professionalism and empathy while analyzing search result and website content to determine if content is harmful to users.
+

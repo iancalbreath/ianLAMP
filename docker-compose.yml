@@ -1,38 +1,37 @@
-version: '3'
+version: '3.8'
 
 services:
   apache:
     build: ./apache
     ports:
       - "80:80"
-    networks:
-      - lamp-network
-
-  php:
-    build: ./php
+    volumes:
+      - ./apache/html:/var/www/html
     depends_on:
       - mariadb
-    ports:
-      - "8080:80"
-    networks:
-      - lamp-network
 
   mariadb:
     build: ./mariadb
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: world_build
+      MYSQL_DATABASE: mydatabase
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - lamp-network
+      - mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    build: ./phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: rootpassword
+    depends_on:
+      - mariadb
 
 volumes:
-  db_data:
-
-networks:
-  lamp-network:
-    external: false
+  mariadb_data:
 

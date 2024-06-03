@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian Calbreath</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Icon -->
+    <link rel="icon" href="./assets/iant32.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Style sheet -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="portfolio-link" class="nav-link" href="./index.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="contact-link" class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="projects-link" class="nav-link" href="./search.php">Projects</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Get the current page URL
+        const currentUrl = window.location.pathname;
+
+        // Get the navigation links by their IDs
+        const portfolioLink = document.getElementById('portfolio-link');
+        const contactLink = document.getElementById('contact-link');
+        const projectsLink = document.getElementById('projects-link');
+
+        // Check if each link's href matches the current URL and set the active class accordingly
+        if (currentUrl.endsWith('index.html')) {
+            portfolioLink.classList.add('active');
+        } else if (currentUrl.endsWith('contact.html')) {
+            contactLink.classList.add('active');
+        } else if (currentUrl.endsWith('search.php')) {
+            projectsLink.classList.add('active');
+        }
+    </script>
+
+
+	<div class="container">
+		<div class="sidebar">
+			<img src="./assets/iant.png" alt="Ian's Photo" class="ianphoto">
+			<p>
+				I’m a quick learner who loves solving puzzles and being of service.
+				<br>
+				<br>
+				My foundation in IT began as a Field Technician during the pandemic.  This has been a trying time for our community, and it was a challenge and an honor to serve as an essential worker.
+				<br>
+				<br>
+				I’m proud to continue serving my community in my current position at Contra Costa Health, where I collaborate with several IT departments in providing support to our hospitals and clinics.
+				<br>
+				<br>
+				I’m also attending school full-time on my way to my degree in Computer Science and have a special interest in SQL and Python programming, disaster recovery, and security.
+			</p>
+			
+			<img src="./assets/greybar.png" alt="grey bar" class="greybar">
+		</div>
+		<div class="exp">
+			<h1>IAN</h1>
+			<h1>CALBREATH</h1>	
+			<h2>I.T. PROFESSIONAL</h2>
+			<br>
+			<h3>EDUCATION</h3>
+			<p>Los Medanos College & Diablo Valley College (2023 – Current)</p>
+			<ul>
+				<li>Computer Science major graduating in Spring 2025.</li>
+				<li>Alongside my core curriculum, I have completed specific courses on SQL, Python, security applications, and network configurations.</li>
+			</ul>
+			<p>Modesto Junior College (2020 – 2021)</p>
+			<ul>
+				<li>PC Servicing and Repair courses with preparation for the CompTIA A+ exam.</li>
+				<li>After completing this coursework I passed the CompTIA A+ exam, earning my first certificate.</li></p>
+			</ul>
+			<br>
+			<h3>WORK EXPERIENCE</h3>
+			<p>Contra Costa County Health Services - Computer Operator II (2022 – Current)</p>
+			<ul>
+				<li>Collaborated cross-functionally with Database, Service Desk, and Infrastructure teams to expedite resolution of after-hours issues with support calls, automated jobs, infrastructure downtime, and catastrophic system failures.<br></li>
+				<li>Acted as Service Desk support agent during evening hours to ensure uninterrupted support for critical healthcare facilities.<br></li>
+				<li>Reduced mean incident resolution time by 35% by implementing incident management policies.<br></li>
+				<li>Ensured Disaster Recovery readiness by creating daily environment backups.<br></li>
+				<li>Misc. duties such as: Facilitate file transfers, monitor SQL Agent jobs for completion and errors, batch scan files for errors, monitor system health interfaces, VMware connections, cluster health, and CCTV systems.</li><br>
+			</ul>
+
+			<p>PAQ Inc. dba "Food 4 Less" - IT Field Technician (2020 – 2021)</i>
+			<ul>
+				<li>Ensured store operability by supporting helpdesk calls, visiting store sites daily to check in with store director and manager, and servicing IT equipment.<br></li>
+				<li>Organized PIN Pad repair/replacement into one streamlined process and established line of communication with vendor that was not present before.<br></li>
+				<li>Organized vendor appointments with stores for services we could not complete in-house such as running electrical lines, satellite installation, and Point-of-Sale system installation.<br></li>
+			</ul>
+			</p>
+			<h3><!-- NEXT ENTRY (NON-IT GIGS?) --></h3>
+		</div>
+		
+		
+		
+	</div>
+
+</body>
+
+</html>
