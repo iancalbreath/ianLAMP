@@ -16,16 +16,31 @@ if ($conn->connect_error) {
 // Fetch search query from the form
 $search = isset($_POST['search']) ? $_POST['search'] : '';
 
-// SQL query to search the characters table
-$sql = "SELECT * FROM characters WHERE firstname LIKE '%$search%' OR lastname LIKE '%$search%' OR species LIKE '%$search%' OR hometown LIKE '%$search%' OR height LIKE '%$search%' OR weight LIKE '%$search%' OR eye_color LIKE '%$search%' OR hair_color LIKE '%$search%' OR build LIKE '%$search%' OR positive_traits LIKE '%$search%' OR negative_traits LIKE '%$search%' OR motivations LIKE '%$search%' OR fears LIKE '%$search%' OR family_members LIKE '%$search%' OR education LIKE '%$search%' OR physical_perks LIKE '%$search%' OR magical_perks LIKE '%$search%' OR social_perks LIKE '%$search%' OR languages LIKE '%$search%' OR primary_weapon LIKE '%$search%' OR primary_armor LIKE '%$search%' OR unique_items LIKE '%$search%' OR social_status LIKE '%$search%' OR affiliations LIKE '%$search%' OR enemies LIKE '%$search%' OR backstory LIKE '%$search%'";
+// SQL query using prepared statement
+$sql = "SELECT * FROM characters WHERE firstname LIKE ? OR lastname LIKE ? OR species LIKE ? OR hometown LIKE ? OR height LIKE ? OR weight LIKE ? OR eye_color LIKE ? OR hair_color LIKE ? OR build LIKE ? OR positive_traits LIKE ? OR negative_traits LIKE ? OR motivations LIKE ? OR fears LIKE ? OR family_members LIKE ? OR education LIKE ? OR physical_perks LIKE ? OR magical_perks LIKE ? OR social_perks LIKE ? OR languages LIKE ? OR primary_weapon LIKE ? OR primary_armor LIKE ? OR unique_items LIKE ? OR social_status LIKE ? OR affiliations LIKE ? OR enemies LIKE ?";
+$stmt = $conn->prepare($sql);
+if ($stmt === false) {
+    die("Error preparing statement: " . $conn->error);
+}
 
-$result = $conn->query($sql);
+// Bind parameters and execute the statement
+$stmt->bind_param("sssssssssssssssssssssssss", $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search, $search);
+if ($stmt->execute() === false) {
+    die("Error executing statement: " . $stmt->error);
+}
+
+// Get the result set
+$result = $stmt->get_result();
 
 // Check if the query was successful
 if ($result === false) {
     die("Error: " . $conn->error);
 }
 ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
