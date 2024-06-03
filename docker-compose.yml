@@ -12,11 +12,8 @@ services:
 
   mariadb:
     build: ./mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+    env_file:
+    - text.env
     ports:
       - "3306:3306"
     volumes:
@@ -28,7 +25,8 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: mariadb
-      MYSQL_ROOT_PASSWORD: rootpassword
+    env_file:
+    - text.env
     depends_on:
       - mariadb
 
